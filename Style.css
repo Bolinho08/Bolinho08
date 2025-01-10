@@ -1,0 +1,294 @@
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Título com Gradiente Animado */
+h1 {
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ff0000, #ffd700, #007bff, #00ff00);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 5s infinite linear;
+    text-align: center;
+    margin-top: 50px;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Reprodutor de Vídeo */
+.video-container {
+    max-width: 800px;
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    animation: rgbGlow 1s infinite alternate;
+    display: block; /* Player começa visível */
+}
+
+@keyframes rgbGlow {
+    0% {
+        box-shadow: 0 0 15px red, 0 0 25px blue, 0 0 35px green;
+    }
+    50% {
+        box-shadow: 0 0 25px red, 0 0 35px blue, 0 0 45px green;
+    }
+    100% {
+        box-shadow: 0 0 35px red, 0 0 45px blue, 0 0 55px green;
+    }
+}
+
+video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+}
+
+.play-btn, .fullscreen-btn, .volume-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.play-btn:hover, .fullscreen-btn:hover, .volume-btn:hover {
+    color: #ffcc00;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+    height: 5px;
+    background-color: #444;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.progress-bar-filled {
+    height: 100%;
+    width: 0;
+    background-color: #ffcc00;
+    border-radius: 5px;
+}
+
+.volume-bar {
+    width: 100px;
+    height: 5px;
+    background-color: #444;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.volume-bar-filled {
+    height: 100%;
+    width: 50%;
+    background-color: #ffcc00;
+    border-radius: 5px;
+}
+
+/* Lista de Episódios (oculta inicialmente) */
+.episodios-container {
+    width: 100%;
+    background-color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+    max-height: 50vh;
+    overflow-y: auto;
+    display: none; /* Inicialmente oculta */
+    border: 2px solid #ffcc00; /* Borda ao redor da lista */
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.episodios-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.episodios-list li {
+    list-style-type: none;
+    width: 80%;
+    margin: 10px 0;
+}
+
+.episodios-list a {
+    display: block;
+    padding: 15px;
+    background-color: transparent;
+    color: #ffcc00;
+    text-align: center;
+    font-size: 1.1em;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.episodios-list a:hover {
+    color: #ffd700;
+}
+
+/* Botão para Exibir Lista de Episódios */
+.show-episodios-btn {
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.show-episodios-btn:hover {
+    background-color: #ff5733;
+}
+
+/* Menu Lateral */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+.menu-btn div {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.menu-lateral {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow-x: hidden;
+    transition: 0.5s ease;
+    padding-top: 60px;
+    z-index: 999;
+    box-shadow: 2px 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.menu-lateral a {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+    background: linear-gradient(90deg, #ff0000, #ffd700, #007bff);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menu-lateral.open {
+    width: 250px;
+}
+
+/* Submenu */
+.submenu {
+    display: none;
+    padding-left: 30px;
+}
+
+.submenu.open {
+    display: block;
+}
+
+/* Link desativado */
+.disabled {
+    color: #d3d3d3;
+    pointer-events: none; /* Desativa o clique */
+    background-color: #e0e0e0;
+    cursor: not-allowed; /* Indica que o link está desativado */
+}
+.botao {
+  display: inline-block;
+ padding: 10px 20px;
+ background-color: #ff5733; /* Botão laranja para contraste */
+ color: #fff;
+  border: none;
+         border-radius: 4px;
+            font-size: 14px;
+         cursor: pointer;
+      margin-bottom: 10px;
+       transition: background-color 0.3s;
+        }
+.botao:hover {
+    background-color: #e6c200;
+}
+
