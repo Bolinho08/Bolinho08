@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página da Série - Streamer Style</title>
+    <link rel="stylesheet" href="Style.css">
+    <style>
+        /* Estilo das capas */
+        body {
+            background-color: #121212; /* Fundo preto */
+            color: #fff; /* Texto branco para contraste */
+            font-family: Arial, sans-serif;
+        }
+
+        .filmes-relacionados {
+            padding: 20px;
+        }
+
+        .filmes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center; /* Alinha as capas no centro */
+        }
+
+        .filme {
+            width: calc(50% - 20px); /* Duas capas por linha */
+            max-width: 250px;
+            text-align: center;
+            background: #1f1f1f; /* Fundo cinza escuro para contraste */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra leve */
+            overflow: hidden;
+        }
+
+        .filme img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #333; /* Divisão sutil entre imagem e fundo */
+        }
+
+        .filme p {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .filme button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5733; /* Botão laranja para contraste */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .filme button:hover {
+            background-color: #c4412a; /* Sombra mais escura ao passar o mouse */
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ffcc00; /* Amarelo para destacar os títulos */
+        }
+    </style>
+</head>
+<body>
+  
+    <header>
+        <div class="container">
+            <h1>Séries</h1>
+        </div>
+    </header>
+    
+    <!-- Seção de Filmes Relacionados -->
+    <section class="filmes-relacionados">
+        <div class="container">
+            <div class="filmes">
+                <div class="filme">
+                    <img src="https://static.tvtropes.org/pmwiki/pub/images/kakuren_v1.jpg" alt="serie1">
+                    <p>kakuranger</p>
+                    <a href="kakuranger.html" class="botao">Assistir</a>
+
+                </div>
+                <div class="filme">
+                    <img src="filme2.jpg" alt="Filme 2">
+                    <p>Filme 2</p>
+                    <button>Assistir</button>
+                </div>
+                <div class="filme">
+                    <img src="filme3.jpg" alt="Filme 3">
+                    <p>Filme 3</p>
+                    <button onclick="window.location.href='outra-pagina.html';" class="botao">Assistir</button>
+
+                </div>
+                <div class="filme">
+                    <img src="filme4.jpg" alt="Filme 4">
+                    <p>Filme 4</p>
+                    <button>Assistir</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nome da Plataforma de Streaming - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+<!-- Menu com Botão -->
+    <button class="menu-btn" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+
+    <div id="menuLateral" class="menu-lateral">
+        <a href="Index.html">Início</a>
+        <a href="Séries.html">Séries</a>
+        <a href="filmes.html">Filmes</a>
+        <a href="sobre.html">Sobre</a>
+    </div>
+    
+    <script>
+        const menu = document.getElementById('menuLateral');
+
+        // Função para abrir/fechar o menu
+        function toggleMenu() {
+            menu.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
+
+</html>

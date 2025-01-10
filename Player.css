@@ -1,0 +1,129 @@
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.video-container {
+    display: none;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #000;
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Seção dos Episódios */
+.episodios-container {
+    background-color: #1a1a1a; /* Cor de fundo diferenciada */
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.episodios-lista {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    display: block;
+    max-height: 0;
+    overflow: hidden; /* Oculta o conteúdo que ultrapassa a altura */
+    opacity: 0; /* Torna a lista invisível */
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-in-out; /* Transição suave */
+}
+
+.episodios-lista li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.episodios-lista li:hover {
+    transform: scale(1.05);
+    background-color: #333;
+}
+
+.episodios-lista a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #000; /* Cor do texto preta */
+    font-size: 18px; /* Tamanho da fonte */
+    display: block; /* Faz o link ocupar toda a largura disponível */
+    padding: 12px 24px; /* Adiciona preenchimento (transformando em botão) */
+    background-color: #ffd700; /* Cor de fundo dourada do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    text-align: center; /* Centraliza o texto */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave para fundo e cor */
+}
+
+.episodios-lista a:hover {
+    background-color: #e6c200; /* Altera a cor de fundo para um tom mais escuro de amarelo */
+    color: #fff; /* Altera a cor do texto para branco */
+}
+
+/* Botão para mostrar episódios */
+.mostrar-episodios-btn {
+    background-color: #ffd700; /* Cor de fundo inicial (dourado) */
+    color: #000; /* Cor do texto (preto) */
+    padding: 14px 28px; /* Preenchimento do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 20px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    border: none; /* Remove a borda padrão */
+    margin-top: 20px; /* Margem superior */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave para a cor de fundo e transformação */
+}
+
+.mostrar-episodios-btn:hover {
+    background-color: #e6c200; /* Cor de fundo amarela quando o mouse passa por cima */
+    color: #000; /* Garante que a cor do texto permaneça preta */
+    transform: scale(1.1); /* Aumenta o tamanho do botão ligeiramente */
+}
+
+/* Adiciona transição de visibilidade */
+.show {
+    max-height: 500px;
+    opacity: 1;
+    padding-right: 15px;
+    overflow-y: auto;
+}
+
+.episodio-info {
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Diminuir a capa */
+.episodio-capa {
+    width: 80%; /* Diminui a largura para 80% do tamanho do container */
+    max-width: 400px; /* Limita a largura máxima para 400px */
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.episodio-descricao {
+    font-size: 16px;
+    color: #bbb;
+    text-align: left;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+/* Para a área de rolagem */
+.episodios-container {
+    max-height: 400px;
+    overflow-y: auto;
+}

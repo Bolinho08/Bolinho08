@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reproduza vídeos diretamente do Dropbox com uma interface moderna e limpa.">
+    <meta name="author" content="Seu Nome">
+    <title>kakuranger - Episódios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Player.css"> 
+    <!-- Importa o arquivo CSS -->
+</head>
+<body>
+    <!-- Menu com Botão -->
+    <button class="menu-btn" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+
+    <div id="menuLateral" class="menu-lateral">
+        <a href="lndex.html">Início</a>
+        <a href="Séries.html">Séries</a>
+        <a href="filmes.html">Filmes</a>
+        <a href="sobre.html">Sobre</a>
+    </div>
+
+    <h1>Ninja Sentai Kakuranger</h1>
+
+    <!-- Capa e descrição do episódio -->
+    <div id="episodioInfo" class="episodio-info">
+        <img id="episodioCapa" class="episodio-capa" src="https://i.postimg.cc/VL7cvHYR/Kakuranger-Movie-Poster.jpg" alt="Capa do episódio" />
+        <p id="episodioDescricao" class="episodio-descricao">Sentai Kakurenjā?, traduzido como Esquadrão Ninja Kakuranger) é a 18ª série da franquia Super Sentai, produzida em 1994 pela Toei Company, sucedendo Dairanger e antecedendo Ohranger. Esta série foi utilizada para fazer a 3ª temporada de Power Rangers. Exibida pela TV Asahi entre 18 de fevereiro de 1994 a 24 de fevereiro de1995 no horário entre 17h30 às 17h55. Tem ao todo 53 episódios (sendo uma das séries sentai mais extensas), além dos especiais Super Sentai World (um especial team-up com os todos sentais de Fiveman a Kakuranger) e Kakuranger versus Ohranger, mais o filme Ninja Battle Team Hide ranger.</p>
+    </div>
+
+    <!-- Player de vídeo (inicialmente oculto) -->
+    <div class="video-container" id="videoContainer">
+        <video id="videoPlayer" controls>
+            <source id="videoSource" src="" type="video/mp4">
+            Seu navegador não suporta o vídeo.
+        </video>
+    </div>
+
+    <!-- Botão para mostrar/esconder lista de episódios -->
+    <button class="mostrar-episodios-btn" onclick="toggleEpisodios()">Mostrar Episódios</button>
+
+    <ul class="episodios-lista" id="episodiosLista">
+        <!-- Substitua com o link e descrição do vídeo de cada episódio -->
+        <li><a href="#" onclick="changeVideo('https://uc6982a248f0403be7b601e0eb27.dl.dropboxusercontent.com/cd/0/inline/Ch7909STzl3HXHr4sIKF5d7lpW2_uFqV9_hCLbpSRhGF_q1lrTJop1pzkpnqgsxPgVUfGojKqYNsJBwutxJeHGvNRWkqJxXfc3zUusL53ABfEye6X0iWXZquOOm9dATPxw68Iysng5-W2WgYs8jdpOsZ/file', 'capa1.jpg', 'Descrição do episódio 1')">Episódio 1</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_2', 'capa2.jpg', 'Descrição do episódio 2')">Episódio 2</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_3', 'capa3.jpg', 'Descrição do episódio 3')">Episódio 3</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_4', 'capa4.jpg', 'Descrição do episódio 4')">Episódio 4</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_5', 'capa5.jpg', 'Descrição do episódio 5')">Episódio 5</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_6', 'capa6.jpg', 'Descrição do episódio 6')">Episódio 6</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_7', 'capa7.jpg', 'Descrição do episódio 7')">Episódio 7</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_8', 'capa8.jpg', 'Descrição do episódio 8')">Episódio 8</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_9', 'capa9.jpg', 'Descrição do episódio 9')">Episódio 9</a></li>
+        <li><a href="#" onclick="changeVideo('URL_DO_VÍDEO_DO_EPISÓDIO_10', 'capa10.jpg', 'Descrição do episódio 10')">Episódio 10</a></li>
+    </ul>
+
+    <script>
+        const menu = document.getElementById('menuLateral');
+        const videoContainer = document.getElementById('videoContainer');
+        const episodioInfo = document.getElementById('episodioInfo');
+        const episodioCapa = document.getElementById('episodioCapa');
+        const episodioDescricao = document.getElementById('episodioDescricao');
+
+        // Função para abrir/fechar o menu
+        function toggleMenu() {
+            menu.classList.toggle('open');
+        }
+
+        // Função para mudar o vídeo no player e atualizar capa e descrição
+        function changeVideo(videoUrl, capaUrl, descricao) {
+            // Atualiza o vídeo
+            const videoSource = document.getElementById('videoSource');
+            videoSource.src = videoUrl;
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.load(); // Recarrega o player de vídeo
+            videoPlayer.play(); // Inicia a reprodução do vídeo
+            videoContainer.style.display = "block"; // Mostra o player
+
+            // Atualiza a capa e descrição
+            episodioCapa.src = capaUrl;
+            episodioDescricao.textContent = descricao;
+
+            // Esconde a capa e a descrição quando o vídeo é exibido
+            episodioInfo.style.display = "none";
+        }
+
+        // Função para mostrar/esconder a lista de episódios com animação
+        function toggleEpisodios() {
+            const episodiosLista = document.getElementById('episodiosLista');
+            episodiosLista.classList.toggle('show'); // Alterna a classe 'show' para expandir ou esconder
+        }
+    </script>
+</body>
+</html>
