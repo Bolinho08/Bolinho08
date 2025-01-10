@@ -1,311 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tokusatsu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            height: 100vh;
-            transition: margin-left 0.3s ease;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Botão para abrir e fechar o menu */
-        .toggle-menu-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #000;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border: none;
-            cursor: pointer;
-            font-size: 30px;
-            text-align: center;
-            line-height: 40px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .toggle-menu-btn:hover {
-            background-color: #444;
-        }
-
-        .menu {
-            width: 250px;
-            background-color: #222;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            position: fixed;
-            left: -250px; /* Oculta o menu por padrão */
-            height: 100%;
-            top: 0;
-            transition: left 0.3s ease;
-        }
-
-        .container {
-            flex-grow: 1;
-            padding: 20px;
-            margin-left: 0;
-            transition: margin-left 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        iframe {
-            width: 100%;
-            height: 300px;
-            max-height: 500px;
-            border: none;
-            border-radius: 8px;
-            background-color: #000;
-        }
-
-        input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .accordion {
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-            width: 100%;
-            text-align: left;
-            border: none;
-            outline: none;
-            font-size: 18px;
-            margin: 5px 0;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .accordion:hover {
-            background-color: #007bff;
-        }
-
-        .panel {
-            padding: 10px;
-            display: none;
-            background-color: #222;
-            border-left: 2px solid #007bff;
-            margin-bottom: 5px;
-        }
-
-        .search-results {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-            max-height: 200px;
-            overflow-y: auto;
-            background-color: #333;
-            border-radius: 5px;
-        }
-
-        .search-results li a {
-            padding: 8px 15px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #444;
-            text-decoration: none;
-            display: block;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-results li a:hover {
-            background-color: #007bff;
-        }
-
-        .search-results li a img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            border-radius: 5px;
-        }
-
-        .menu a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .menu a:hover {
-            background-color: #007bff;
-            display: block;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-
-        /* Botão para abrir e fechar o menu */
-        .toggle-menu-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #000;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border: none;
-            cursor: pointer;
-            font-size: 30px;
-            text-align: center;
-            line-height: 40px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-        .toggle-menu-btn:hover {
-            background-color: #444;
-        }
-
-        /* Centraliza o título */
-        .title-container {
-            width: 100%;
-            text-align: center;
-        }
-
-    </style>
+    <meta name="description" content="Reproduza vídeos diretamente do Dropbox com uma interface moderna e limpa.">
+    <meta name="author" content="Seu Nome">
+    <title>Tokusatsu - Início</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-    <!-- Botão para abrir e fechar o menu -->
-    <button class="toggle-menu-btn" onclick="toggleMenu()">☰</button>
+    <!-- Menu com Botão -->
+    <button class="menu-btn" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
 
-    <!-- Menu Lateral -->
-    <div class="menu" id="menu">
-        <h2>Menu de Filmes</h2>
-        <input type="text" id="searchInput" placeholder="Buscar vídeos..." onkeyup="searchVideos()">
-        <ul id="searchResults" class="search-results"></ul>
-
-        <!-- Acordeão de categorias -->
-        <button class="accordion" onclick="toggleEpisodeList('serie1')">Filme Formiga</button>
-        <div class="panel" id="serie1">
-            <ul>
-                <li><a href="javascript:void(0);" onclick="loadVideoFromLink('1Hdx8-94g7hh9fdkj98sd6k7', 'Filme Formiga EP1', 'https://via.placeholder.com/150')">
-                    <img src="https://via.placeholder.com/40" alt="Capa Formiga EP1">Filme Formiga EP1</a></li>
-                <li><a href="javascript:void(0);" onclick="loadVideoFromLink('1P9y8sNQfSKf0zn-rbh8yP_T8zqf9hJt', 'Filme Formiga EP2', 'https://via.placeholder.com/150')">
-                    <img src="https://via.placeholder.com/40" alt="Capa Formiga EP2">Filme Formiga EP2</a></li>
-                <li><a href="javascript:void(0);" onclick="loadVideoFromLink('1g8D0_s2Hp8Hbd9hXAkzIk4N-Eh4wnPtm', 'Filme Formiga EP3', 'https://via.placeholder.com/150')">
-                    <img src="https://via.placeholder.com/40" alt="Capa Formiga EP3">Filme Formiga EP3</a></li>
-            </ul>
-        </div>
+    <div id="menuLateral" class="menu-lateral">
+        <a href="Index.html">Início</a>
+        <a href="Séries.html">Séries</a>
+        <a href="filmes.html">Filmes</a>
+        <a href="sobre.html">Sobre</a>
     </div>
 
-    <!-- Container de Vídeo -->
-    <div class="container">
-        <div class="title-container">
-            <h1>Google Drive Video Player</h1>
-        </div>
-        <p>Escolha uma categoria de vídeos ou insira o ID do arquivo do Google Drive para reproduzir o vídeo.</p>
-
-        <!-- Ou opção de inserir o ID manualmente -->
-        <p>Ou insira o ID do arquivo para reproduzir:</p>
-        <input type="text" id="fileId" placeholder="Insira o ID do arquivo aqui">
-        <button onclick="loadVideo()">Reproduzir</button>
-
-        <!-- Iframe para o vídeo -->
-        <div id="videoContainer">
-            <iframe id="videoFrame" src="" allow="autoplay"></iframe>
-        </div>
-    </div>
+    <!-- Conteúdo da Página -->
+    <h1>Bem-vindo ao Tokusatsu!</h1>
+    <p>Explore vídeos e séries de Tokusatsu aqui.</p>
 
     <script>
-        const videoLinks = [
-            { id: '1Hdx8-94g7hh9fdkj98sd6k7', name: 'Filme Formiga EP1', cover: 'https://via.placeholder.com/150' },
-            { id: '1P9y8sNQfSKf0zn-rbh8yP_T8zqf9hJt', name: 'Filme Formiga EP2', cover: 'https://via.placeholder.com/150' },
-            { id: '1g8D0_s2Hp8Hbd9hXAkzIk4N-Eh4wnPtm', name: 'Filme Formiga EP3', cover: 'https://via.placeholder.com/150' },
-        ];
+        const menu = document.getElementById('menuLateral');
 
-        function loadVideo() {
-            const fileId = document.getElementById('fileId').value.trim();
-            if (fileId) {
-                const videoUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-                document.getElementById('videoFrame').src = videoUrl;
-            } else {
-                alert('Por favor, insira um ID válido.');
-            }
-        }
-
-        function loadVideoFromLink(fileId, name, cover) {
-            const videoUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-            document.getElementById('videoFrame').src = videoUrl;
-            document.getElementById('searchInput').value = name;
-
-            // Mostra a imagem no submenu de busca
-            document.getElementById('searchResults').innerHTML = `<li><a href="javascript:void(0);" onclick="loadVideoFromLink('${fileId}', '${name}', '${cover}')"><img src="${cover}" alt="${name}">${name}</a></li>`;
-        }
-
-        function searchVideos() {
-            const query = document.getElementById('searchInput').value.trim().toLowerCase();
-            const resultsContainer = document.getElementById('searchResults');
-            resultsContainer.innerHTML = '';  // Limpa os resultados sempre que a pesquisa for feita.
-
-            if (query === '') {
-                return;  // Se a pesquisa estiver vazia, não mostra nada.
-            }
-
-            const results = videoLinks.filter(video => video.name.toLowerCase().includes(query));
-
-            results.forEach(result => {
-                const li = document.createElement('li');
-                li.innerHTML = `<a href="javascript:void(0);" onclick="loadVideoFromLink('${result.id}', '${result.name}', '${result.cover}')"><img src="${result.cover}" alt="${result.name}">${result.name}</a>`;
-                resultsContainer.appendChild(li);
-            });
-        }
-
+        // Função para abrir/fechar o menu
         function toggleMenu() {
-            const menu = document.getElementById('menu');
-            const container = document.querySelector('.container');
-            const isMenuVisible = menu.style.left === '0px';
-
-            if (isMenuVisible) {
-                menu.style.left = '-250px';
-                container.style.marginLeft = '0';
-            } else {
-                menu.style.left = '0';
-                container.style.marginLeft = '250px';
-            }
-        }
-
-        function toggleEpisodeList(serieId) {
-            const panel = document.getElementById(serieId);
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            menu.classList.toggle('open');
         }
     </script>
 </body>
